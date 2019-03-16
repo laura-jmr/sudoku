@@ -7,8 +7,6 @@ public class RulesChecker {
 	public static boolean errorInnerField = false;
 	public static boolean errorRows = false;
 	public static boolean errorColumns = false;
-	public static boolean errorDiagLR = false;
-	public static boolean errorDiagRL = false;
 	public static int currentNumberPos;
 	static Field currentField;
 	static Field oldField;
@@ -46,32 +44,30 @@ public class RulesChecker {
 
 			resetErrors();
 			checkInnerField(innerField);
+			//checkRows(innerField.gameField);
 
-			if (errorInnerField || errorRows || errorColumns || errorDiagLR || errorDiagRL) {
+			if (errorInnerField || errorRows || errorColumns) {
 				UserInterface.error();
 			}
 		}
 
-		//checkRows(innerField.gameField);
+
 	}
 
 	private static void rechecking (InnerField innerField, Field field) {
-		if (oldField == field) {
-			for (int i = 0; i < oldField.getInnerField().allFields.length; i++) {
-				if(oldField.getInnerField().allFields[i].getForeground() == Color.red) {
-					oldField.getInnerField().allFields[i].setForeground(Color.black);
-				}
+		for (int i = 0; i < oldField.getInnerField().allFields.length; i++) {
+			if(oldField.getInnerField().allFields[i].getForeground() == Color.red) {
+				oldField.getInnerField().allFields[i].setForeground(Color.black);
 			}
+		}
+
+		if (oldField == field) {
 			errorFields = new List<>();
 			rechecked = true;
 			checkRules(innerField, field);
 			return;
+
 		} else {
-			for (int i = 0; i < oldField.getInnerField().allFields.length; i++) {
-				if(oldField.getInnerField().allFields[i].getForeground() == Color.red) {
-					oldField.getInnerField().allFields[i].setForeground(Color.black);
-				}
-			}
 			rechecked = true;
 			checkRules(innerField, field);
 		}
@@ -83,23 +79,67 @@ public class RulesChecker {
 		errorInnerField = false;
 		errorRows = false;
 		errorColumns = false;
-		errorDiagLR = false;
-		errorDiagRL = false;
 		currentNumberPos = 0;
 		rechecked = true;
 		errorFields = new List<>();
 	}
 
 	private static void checkRows (GameField gameField) {
-		/*List<Integer> multiples = multipleNumbersInRows(gameField);
+		/*List<Field> multiples = multipleNumbersInRows(gameField);
 
 		if (!multiples.isEmpty()) {
-			error = true;
+			errorRows = true;
 
 		}
 		else {
-			error = false;
+			errorRows = false;
 		}*/
+
+
+		/*String currentNumber;
+		boolean found = false;
+		String[][] gameNumbers = gameField.get2DNumberArray();
+
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 3; j++) {
+				switch (j) {
+					case 0:
+						for (int k = 0; k < 3; k++) {
+							currentNumber = gameNumbers[i][j];
+						}
+
+					case 1:
+					case 2:
+				}
+				currentNumber = gameNumbers[i][j];
+
+				for (int k = 1; k < 3; k++) {
+					if (currentNumber.equals(gameNumbers[i][k]) && !currentNumber.equals("") && j!=k) {
+						errorFields.append(i);
+						errorFields.append(j);
+						errorFields.append(i);
+						errorFields.append(k);
+						found = true;
+					}
+					if (found)
+						k = 8;
+				}
+			}
+		}*/
+
+		List<Field> numbers = new List<>();
+		int length = 0;
+		for (int i = 0; i < gameField.allFields.length; i++) {
+			for (int j = 0; j < gameField.allFields[0].allFields.length; j++) {
+				length++;
+				numbers.append(gameField.allFields[i].allFields[j]);
+			}
+		}
+
+		for (int i = 0; i < length; i++) {
+
+		}
+
 	}
 
 	private static List<Field> multipleNumbersInRows (GameField gameField) {

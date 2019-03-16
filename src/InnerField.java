@@ -17,6 +17,10 @@ public class InnerField extends JPanel {
 	Field[] allFields = new Field[9];
 	GameField gameField;
 
+	// Todo von puta => fields automatisiert initialisieren und dann das field array verwenden um die einzelnen fields zu accessen
+	// e.g. field4 wird zu fields[3]
+	//private InnerField[] fields;
+
 	public InnerField (GameField field) {
 		setBackground(new java.awt.Color(244, 244, 244));
 		gameField = field;

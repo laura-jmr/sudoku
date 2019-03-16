@@ -16,6 +16,10 @@ public class GameField extends JPanel {
 	InnerField[] allFields;
 	UserInterface game;
 
+	// Todo von puta => fields automatisiert initialisieren und dann das field array verwenden um die einzelnen fields zu accessen
+	// e.g. InnerField4 wird zu fields[3]
+	//private InnerField[] fields;
+
 	public GameField (UserInterface g) {
 		innerField1 = new InnerField(this);
 		innerField2 = new InnerField(this);
@@ -37,6 +41,10 @@ public class GameField extends JPanel {
 		allFields[6] = innerField7;
 		allFields[7] = innerField8;
 		allFields[8] = innerField9;
+
+		//for( int i = 0; i < 9; i++) {
+		//	fields[i] = new InnerField(this);
+		//}
 
 		game = g;
 
