@@ -1,206 +1,155 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class GameField extends JPanel {
 
-	private InnerField innerField1;
-	private InnerField innerField2;
-	private InnerField innerField3;
-	private InnerField innerField4;
-	private InnerField innerField5;
-	private InnerField innerField6;
-	private InnerField innerField7;
-	private InnerField innerField8;
-	private InnerField innerField9;
-	InnerField[] allFields;
-	UserInterface game;
+	InnerField[] innerFields;
 
-	// Todo von puta => fields automatisiert initialisieren und dann das field array verwenden um die einzelnen fields zu accessen
-	// e.g. InnerField4 wird zu fields[3]
-	//private InnerField[] fields;
+	public GameField () {
+		innerFields = new InnerField[9];
 
-	public GameField (UserInterface g) {
-		innerField1 = new InnerField(this);
-		innerField2 = new InnerField(this);
-		innerField3 = new InnerField(this);
-		innerField4 = new InnerField(this);
-		innerField5 = new InnerField(this);
-		innerField6 = new InnerField(this);
-		innerField7 = new InnerField(this);
-		innerField8 = new InnerField(this);
-		innerField9 = new InnerField(this);
-		allFields = new InnerField[9];
+		for (int i = 0; i < innerFields.length; i++) {
+			innerFields[i] = new InnerField();
+		}
 
-		allFields[0] = innerField1;
-		allFields[1] = innerField2;
-		allFields[2] = innerField3;
-		allFields[3] = innerField4;
-		allFields[4] = innerField5;
-		allFields[5] = innerField6;
-		allFields[6] = innerField7;
-		allFields[7] = innerField8;
-		allFields[8] = innerField9;
-
-		//for( int i = 0; i < 9; i++) {
-		//	fields[i] = new InnerField(this);
-		//}
-
-		game = g;
-
-		this.setBackground(new java.awt.Color(255, 255, 255));
-		this.setForeground(new java.awt.Color(255, 255, 255));
+		setBackground(new java.awt.Color(255, 255, 255));
+		setForeground(new java.awt.Color(255, 255, 255));
 
 		javax.swing.GroupLayout gameFieldLayout = new javax.swing.GroupLayout(this);
 		this.setLayout(gameFieldLayout);
 		gameFieldLayout.setHorizontalGroup(
-				gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(gameFieldLayout.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addComponent(innerField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(innerField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(innerField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addGap(18, 18, 18)
-								.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addComponent(innerField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(innerField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(innerField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addGap(18, 18, 18)
-								.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addComponent(innerField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(innerField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(innerField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(gameFieldLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(innerFields[6], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(innerFields[3], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(innerFields[0], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addGap(18, 18, 18)
+					.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(innerFields[7], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(innerFields[4], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(innerFields[1], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addGap(18, 18, 18)
+					.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(innerFields[8], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(innerFields[5], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(innerFields[2], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gameFieldLayout.setVerticalGroup(
-				gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(gameFieldLayout.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(gameFieldLayout.createSequentialGroup()
-														.addComponent(innerField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(18, 18, 18)
-														.addComponent(innerField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(18, 18, 18)
-														.addComponent(innerField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-												.addGroup(gameFieldLayout.createSequentialGroup()
-														.addComponent(innerField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(18, 18, 18)
-														.addComponent(innerField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(18, 18, 18)
-														.addComponent(innerField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-										.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameFieldLayout.createSequentialGroup()
-												.addComponent(innerField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addGap(18, 18, 18)
-												.addComponent(innerField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addGap(18, 18, 18)
-												.addComponent(innerField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-								.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(gameFieldLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+							.addGroup(gameFieldLayout.createSequentialGroup()
+								.addComponent(innerFields[7], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(18, 18, 18)
+								.addComponent(innerFields[4], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(18, 18, 18)
+								.addComponent(innerFields[1], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+							.addGroup(gameFieldLayout.createSequentialGroup()
+								.addComponent(innerFields[8], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(18, 18, 18)
+								.addComponent(innerFields[5], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(18, 18, 18)
+								.addComponent(innerFields[2], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameFieldLayout.createSequentialGroup()
+							.addComponent(innerFields[6], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+							.addGap(18, 18, 18)
+							.addComponent(innerFields[3], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+							.addGap(18, 18, 18)
+							.addComponent(innerFields[0], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 	}
 
-	public String[][] get2DNumberArray () {
-		String[][] numbers = new String[9][9];
+	public Field[] getRow (int r) {
+		Field[] row = new Field[9];
+		InnerField[] innerFieldsOfRow = new InnerField[3];
 
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				switch (i) {
-					case 0:
-						switch (j) {
+		if (r < 3) {
+			innerFieldsOfRow[0] = innerFields[0];
+			innerFieldsOfRow[1] = innerFields[1];
+			innerFieldsOfRow[2] = innerFields[2];
+		} else if (r < 6) {
+			innerFieldsOfRow[0] = innerFields[3];
+			innerFieldsOfRow[1] = innerFields[4];
+			innerFieldsOfRow[2] = innerFields[5];
 
-							case 0:
-								fill2DNumberArray(numbers, this.innerField7, i , j);
-								break;
-							case 1:
-								fill2DNumberArray(numbers, this.innerField8, i , j);
-								break;
-							case 2:
-								fill2DNumberArray(numbers, this.innerField9, i , j);
-								break;
-						}
-						break;
+		} else if (r < 9) {
+			innerFieldsOfRow[0] = innerFields[6];
+			innerFieldsOfRow[1] = innerFields[7];
+			innerFieldsOfRow[2] = innerFields[8];
 
-					case 1:
-						switch (j) {
-
-							case 0:
-								fill2DNumberArray(numbers, this.innerField4, i , j);
-								break;
-							case 1:
-								fill2DNumberArray(numbers, this.innerField5, i , j);
-								break;
-							case 2:
-								fill2DNumberArray(numbers, this.innerField6, i , j);
-								break;
-						}
-						break;
-
-					case 2:
-						switch (j) {
-
-							case 0:
-								fill2DNumberArray(numbers, this.innerField1, i , j);
-								break;
-							case 1:
-								fill2DNumberArray(numbers, this.innerField2, i , j);
-								break;
-							case 2:
-								fill2DNumberArray(numbers, this.innerField3, i , j);
-								break;
-						}
-						break;
-
-				}
-			}
 		}
 
-		return numbers;
+		try {
+			switch (r) {
+				case 0:
+					row = getFieldsOfRow(innerFieldsOfRow, 0);
+					break;
+				case 1:
+					row = getFieldsOfRow(innerFieldsOfRow, 1);
+					break;
+				case 2:
+					row = getFieldsOfRow(innerFieldsOfRow, 2);
+					break;
+				case 3:
+					row = getFieldsOfRow(innerFieldsOfRow, 0);
+					break;
+				case 4:
+					row = getFieldsOfRow(innerFieldsOfRow, 1);
+					break;
+				case 5:
+					row = getFieldsOfRow(innerFieldsOfRow, 2);
+					break;
+				case 6:
+					row = getFieldsOfRow(innerFieldsOfRow, 0);
+					break;
+				case 7:
+					row = getFieldsOfRow(innerFieldsOfRow, 1);
+					break;
+				case 8:
+					row = getFieldsOfRow(innerFieldsOfRow, 2);
+					break;
+			}
+		} catch (NullPointerException e) {
+			System.err.println(e);
+		}
+
+		return row;
 	}
 
-	private void fill2DNumberArray (String[][] num, InnerField field, int y, int x) {
+	private Field[] getFieldsOfRow (InnerField[] innerFields, int r) throws NullPointerException {
+		Field[] row = new Field[9];
 
-		switch (y) {
-			case 0:
-				y = 0;
-				break;
-			case 1:
-				y = 3;
-				break;
-			case 2:
-				y = 6;
-				break;
-		}
+		if (r < 3) {
+			for (int i = 0; i < 3; i++) {
+				Field[] temp = innerFields[i].getRow(r);
 
-		switch (x) {
-			case 0:
-				x = 0;
-				break;
-			case 1:
-				x = 3;
-				break;
-			case 2:
-				x = 6;
-				break;
-		}
-
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-
-				switch (i) {
-					case 0:
-						num[y + i][x + j] = field.allFields[j].getText();
-						break;
-					case 1:
-						num[y + i][x + j] = field.allFields[j + 3].getText();
-						break;
-					case 2:
-						num[y + i][x + j] = field.allFields[j + 6].getText();
-						break;
+				for (int j = 0; j < 3; j++) {
+					switch (i) {
+						case 0:
+							row[j] = temp[j];
+						case 1:
+							row[j + 3] = temp[j];
+						case 2:
+							row[j + 6] = temp[j];
+					}
 				}
 			}
+
+		} else {
+			throw new NullPointerException();
 		}
+
+
+		for (int i = 0; i < row.length; i++) {
+			System.out.println("row: " + row[i].getText());
+		}
+
+		return row;
 	}
 }
 

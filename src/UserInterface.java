@@ -22,7 +22,7 @@ public class UserInterface extends javax.swing.JFrame {
 		newGameButton = new javax.swing.JButton();
 		solveButton = new javax.swing.JButton();
 		infoBox = new javax.swing.JLabel();
-		gameField = new GameField(this);
+		gameField = new GameField();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Sudoku-Solver by laura-jmr");
@@ -170,9 +170,9 @@ public class UserInterface extends javax.swing.JFrame {
         List<Field> temp = RulesChecker.errorFields;
 
         if (temp.isEmpty()) {
-            for (int i = 0; i < RulesChecker.currentField.getInnerField().allFields.length; i++) {
-                if (RulesChecker.currentField.getInnerField().allFields[i].getForeground() == Color.red) {
-                    RulesChecker.currentField.getInnerField().allFields[i].setForeground(Color.black);
+            for (int i = 0; i < RulesChecker.currentField.getInnerField().fields.length; i++) {
+                if (RulesChecker.currentField.getInnerField().fields[i].getForeground() == Color.red) {
+                    RulesChecker.currentField.getInnerField().fields[i].setForeground(Color.black);
                 }
             }
             RulesChecker.rechecked = true;

@@ -43,8 +43,11 @@ public class Field extends JTextField {
 			newInput = "" + event.getKeyChar();
 		}
 
-        if (event.getSource() == currentField){
-            currentField.setText(newInput);
-        }
+		System.out.println("new input: " + newInput);
+		currentField.setText(newInput);
+
+		System.out.println("input in currentfield: " + currentField.getText());
+		System.out.println("input in real field: " + currentField.innerField.fields[0].getText());
+
 	}
 }

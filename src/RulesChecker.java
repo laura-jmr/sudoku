@@ -44,7 +44,7 @@ public class RulesChecker {
 
 			resetErrors();
 			checkInnerField(innerField);
-			//checkRows(innerField.gameField);
+			checkRows(innerField.gameField);
 
 			if (errorInnerField || errorRows || errorColumns) {
 				UserInterface.error();
@@ -55,9 +55,9 @@ public class RulesChecker {
 	}
 
 	private static void rechecking (InnerField innerField, Field field) {
-		for (int i = 0; i < oldField.getInnerField().allFields.length; i++) {
-			if(oldField.getInnerField().allFields[i].getForeground() == Color.red) {
-				oldField.getInnerField().allFields[i].setForeground(Color.black);
+		for (int i = 0; i < oldField.getInnerField().fields.length; i++) {
+			if(oldField.getInnerField().fields[i].getForeground() == Color.red) {
+				oldField.getInnerField().fields[i].setForeground(Color.black);
 			}
 		}
 
@@ -85,6 +85,7 @@ public class RulesChecker {
 	}
 
 	private static void checkRows (GameField gameField) {
+		gameField.getRow(0);
 		/*List<Field> multiples = multipleNumbersInRows(gameField);
 
 		if (!multiples.isEmpty()) {
@@ -93,10 +94,10 @@ public class RulesChecker {
 		}
 		else {
 			errorRows = false;
-		}*/
+		}
 
 
-		/*String currentNumber;
+		String currentNumber;
 		boolean found = false;
 		String[][] gameNumbers = gameField.get2DNumberArray();
 
@@ -125,7 +126,7 @@ public class RulesChecker {
 						k = 8;
 				}
 			}
-		}*/
+		}
 
 		List<Field> numbers = new List<>();
 		int length = 0;
@@ -138,7 +139,7 @@ public class RulesChecker {
 
 		for (int i = 0; i < length; i++) {
 
-		}
+		}*/
 
 	}
 
@@ -180,11 +181,11 @@ public class RulesChecker {
 				if (currentNumber.equals(numbers[j]) && !currentNumber.equals("")) {
 					errorInnerField = true;
 
-					if (currentField == innerField.allFields[i]) {
-						errorFields.append(innerField.allFields[j]);
+					if (currentField == innerField.fields[i]) {
+						errorFields.append(innerField.fields[j]);
 
-					} else if (currentField == innerField.allFields[j]) {
-						errorFields.append(innerField.allFields[i]);
+					} else if (currentField == innerField.fields[j]) {
+						errorFields.append(innerField.fields[i]);
 					}
 				}
 			}
