@@ -8,7 +8,7 @@ public class GameField extends JPanel {
 		innerFields = new InnerField[9];
 
 		for (int i = 0; i < innerFields.length; i++) {
-			innerFields[i] = new InnerField(this);
+			innerFields[i] = new InnerField();
 		}
 
 		setBackground(new java.awt.Color(255, 255, 255));
@@ -148,6 +148,19 @@ public class GameField extends JPanel {
 		}
 
 		return row;
+	}
+
+	public InnerField getInnerfieldOfField (Field field) {
+		InnerField innerField = null;
+
+		for (int i = 0; i < innerFields.length; i++) {
+			for (int j = 0; j < innerFields[0].fields.length; j++) {
+				if (innerFields[i].fields[j] == field)
+					innerField = innerFields[i];
+			}
+		}
+
+		return innerField;
 	}
 }
 

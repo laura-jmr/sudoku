@@ -4,11 +4,9 @@ import java.awt.event.KeyEvent;
 
 public class Field extends JTextField {
 
-	private InnerField innerField;
 	private Field currentField;
 
-	public Field (InnerField field) {
-		innerField = field;
+	public Field () {
 		currentField = this;
 
 		setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -23,13 +21,9 @@ public class Field extends JTextField {
 
 			public void keyTyped(java.awt.event.KeyEvent evt) {
 			handleInput(evt);
-			RulesChecker.checkRules(currentField.getInnerField(), currentField);
+			RulesChecker.checkRules(UserInterface.gameField.getInnerfieldOfField(currentField), currentField);
 			}
 		});
-	}
-
-	public InnerField getInnerField () {
-		return innerField;
 	}
 
 	public void handleInput (KeyEvent event) {
@@ -48,6 +42,6 @@ public class Field extends JTextField {
 		currentField.setText(newInput);
 
 		System.out.println("input in currentfield: " + currentField.getText());
-		System.out.println("input in real field: " + currentField.innerField.fields[0].getText());
+		System.out.println("input in real field: " + UserInterface.gameField.getInnerfieldOfField(currentField).fields[0].getText());
 	}
 }

@@ -1,6 +1,6 @@
 public class SudokuSolver {
 
-	static UserInterface gui;
+	UserInterface gui;
 
 	public SudokuSolver () {
 		gui = new UserInterface();

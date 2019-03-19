@@ -1,12 +1,10 @@
 public class InnerField extends javax.swing.JPanel {
 
 	Field[] fields;
-	GameField gameField;
 
-	public InnerField (GameField g) {
+	public InnerField () {
 		setBackground(new java.awt.Color(244, 244, 244));
 		fields = new Field[9];
-		gameField = g;
 
 		for (int i = 0; i < 9; i++) {
 			fields[i] = new Field(this);
