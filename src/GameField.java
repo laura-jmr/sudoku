@@ -86,6 +86,15 @@ public class GameField extends JPanel {
 
 		}
 
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < innerFields.length; j++) {
+				if (innerFields[j] == innerFieldsOfRow[i]) {
+					System.out.println("index of " + i + " is " + j);
+				}
+			}
+		}
+
+
 		switch (r) {
 			case 0:
 				row = getFieldsOfRow(innerFieldsOfRow, 0);
@@ -155,13 +164,31 @@ public class GameField extends JPanel {
 		for (int i = 0; i < innerFields.length; i++) {
 			for (int j = 0; j < innerFields[0].fields.length; j++) {
 				if (innerFields[i].fields[j] == field){
-					System.out.println("innerfield of " + field.getName() + " is " + i);
 					return innerFields[i];
 				}
 			}
 		}
 
 		return null;
+	}
+
+	public int getRowPosOfField (Field field) {
+		int rowPos;
+		int pos = 0;
+
+		for (int i = 0; i < UserInterface.gameField.innerFields.length; i++) {
+			for (int j = 0; j < UserInterface.gameField.innerFields[0].fields.length; j++) {
+				if (UserInterface.gameField.getInnerfieldOfField(field).fields[i] == field) {
+					break;
+				}
+				pos++;
+			}
+		}
+
+		rowPos = pos / 9;
+		System.out.println("rowpos of currentfield is " + rowPos );
+
+		return rowPos;
 	}
 }
 

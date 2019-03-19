@@ -38,20 +38,20 @@ public class RulesChecker {
 			errorInput = true;
 	}
 
-	public static void checkRules (InnerField innerField, Field field) {
+	public static void checkRules (Field field) {
 
 		if (!rechecked) {
 			oldField = currentField;
 			currentField = field;
 
-			recheck(innerField, field);
+			recheck(field);
 		} else {
 			currentField = field;
 
 			resetErrors();
 
-			checkInnerField(innerField);
-			//checkRows(UserInterface.gameField);
+			checkInnerField(UserInterface.gameField.getInnerfieldOfField(field));
+			checkRows(UserInterface.gameField);
 
 			if (errorInnerField || errorRows || errorColumns) {
 				System.out.println(errorInnerField);
@@ -60,7 +60,8 @@ public class RulesChecker {
 		}
 	}
 
-	private static void recheck (InnerField innerField, Field field) {
+	private static void recheck (Field field) {
+		System.out.println("---rechecking...---");
 		InnerField innerfieldOfOldField = UserInterface.gameField.getInnerfieldOfField(oldField);
 		System.out.println(innerfieldOfOldField.fields.length);
 
@@ -74,13 +75,13 @@ public class RulesChecker {
 			errorFields = new List<>();
 			rechecked = true;
 
-			checkRules(innerField, field);
+			checkRules(field);
 
 			return;
 		} else {
 			rechecked = true;
 
-			checkRules(innerField, field);
+			checkRules(field);
 		}
 	}
 
@@ -108,9 +109,9 @@ public class RulesChecker {
 	}
 
 	private static void checkRows (GameField gameField) {
-
+		System.out.println("---checking row---");
 		try {
-			Field[] row = gameField.getRow(0);
+			Field[] row = gameField.getRow(UserInterface.gameField.getRowPosOfField(currentField));
 		} catch (RowNotExistingException e) {
 			System.err.println(e.getMessage() + "\nplease choose a row between 0 and 8...");
 		}

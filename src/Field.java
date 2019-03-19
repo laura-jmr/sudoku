@@ -21,7 +21,7 @@ public class Field extends JTextField {
 
 			public void keyTyped(java.awt.event.KeyEvent evt) {
 			handleInput(evt);
-			RulesChecker.checkRules(UserInterface.gameField.getInnerfieldOfField(currentField), currentField);
+			RulesChecker.checkRules(currentField);
 			}
 		});
 	}
@@ -38,10 +38,6 @@ public class Field extends JTextField {
 			newInput = "" + event.getKeyChar();
 		}
 
-		System.out.println("new input: " + newInput);
 		currentField.setText(newInput);
-
-		System.out.println("input in currentfield: " + currentField.getText());
-		System.out.println("input in real field: " + UserInterface.gameField.getInnerfieldOfField(currentField).fields[0].getText());
 	}
 }
