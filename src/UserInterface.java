@@ -162,9 +162,9 @@ public class UserInterface extends javax.swing.JFrame {
         List<Field> temp = RulesChecker.errorFields;
 
         if (temp.isEmpty()) {
-        	for (int i = 0; i < RulesChecker.currentField.getInnerField().fields.length; i++) {
-        		if (RulesChecker.currentField.getInnerField().fields[i].getForeground() == Color.red) {
-                    RulesChecker.currentField.getInnerField().fields[i].setForeground(Color.black);
+        	for (int i = 0; i < gameField.getInnerfieldOfField(RulesChecker.currentField).fields.length; i++) {
+        		if (gameField.getInnerfieldOfField(RulesChecker.currentField).fields[i].getForeground() == Color.red) {
+					gameField.getInnerfieldOfField(RulesChecker.currentField).fields[i].setForeground(Color.black);
                 }
             }
 

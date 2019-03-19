@@ -7,7 +7,7 @@ public class InnerField extends javax.swing.JPanel {
 		fields = new Field[9];
 
 		for (int i = 0; i < 9; i++) {
-			fields[i] = new Field(this);
+			fields[i] = new Field();
 		}
 
 		javax.swing.GroupLayout innerFieldLayout = new javax.swing.GroupLayout(this);

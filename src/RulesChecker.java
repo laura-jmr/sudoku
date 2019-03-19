@@ -8,7 +8,6 @@ public class RulesChecker {
 	static boolean errorRows;
 	static boolean errorColumns;
 	static boolean rechecked;
-	static int currentNumberPos;
 	static Field currentField;
 	static Field oldField;
 	static GameField gameField;
@@ -67,7 +66,7 @@ public class RulesChecker {
 	}
 
 	private static void recheck (InnerField innerField, Field field) {
-		
+
 		for (int i = 0; i < UserInterface.gameField.getInnerfieldOfField(oldField).fields.length; i++) {
 			if(UserInterface.gameField.getInnerfieldOfField(oldField).fields[i].getForeground() == Color.red) {
 				UserInterface.gameField.getInnerfieldOfField(oldField).fields[i].setForeground(Color.black);
