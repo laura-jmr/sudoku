@@ -3,22 +3,16 @@ import java.awt.*;
 public class RulesChecker {
 
 
-	static boolean errorInput;
-	static boolean errorInnerField;
-	static boolean errorRows;
-	static boolean errorColumns;
-	static boolean rechecked;
-	static Field currentField;
-	static Field oldField;
-	static GameField gameField;
-	static List<Field> errorFields;
+	static boolean errorInput = false;
+	static boolean errorInnerField = false;
+	static boolean errorRows = false;
+	static boolean errorColumns = false;
+	static boolean rechecked = true;
+	static Field currentField = new Field();
+	static Field oldField = new Field();
+	static List<Field> errorFields = new List<>();
 
-	public RulesChecker (GameField g) {
-		gameField = g;
-		init();
-	}
-
-	private static void init () {
+	private static void resetErrors () {
 		errorInput = false;
 		errorInnerField = false;
 		errorRows = false;
@@ -54,22 +48,25 @@ public class RulesChecker {
 		} else {
 			currentField = field;
 
-			init();
+			resetErrors();
 
 			checkInnerField(innerField);
 			//checkRows(UserInterface.gameField);
 
 			if (errorInnerField || errorRows || errorColumns) {
+				System.out.println(errorInnerField);
 				UserInterface.error();
 			}
 		}
 	}
 
 	private static void recheck (InnerField innerField, Field field) {
+		InnerField innerfieldOfOldField = UserInterface.gameField.getInnerfieldOfField(oldField);
+		System.out.println(innerfieldOfOldField.fields.length);
 
-		for (int i = 0; i < UserInterface.gameField.getInnerfieldOfField(oldField).fields.length; i++) {
-			if(UserInterface.gameField.getInnerfieldOfField(oldField).fields[i].getForeground() == Color.red) {
-				UserInterface.gameField.getInnerfieldOfField(oldField).fields[i].setForeground(Color.black);
+		for (int i = 0; i < innerfieldOfOldField.fields.length; i++) {
+			if(innerfieldOfOldField.fields[i].getForeground() == Color.red) {
+				innerfieldOfOldField.fields[i].setForeground(Color.black);
 			}
 		}
 
@@ -80,7 +77,6 @@ public class RulesChecker {
 			checkRules(innerField, field);
 
 			return;
-
 		} else {
 			rechecked = true;
 
