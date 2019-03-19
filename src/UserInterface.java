@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class UserInterface extends javax.swing.JFrame {
 
@@ -9,7 +8,7 @@ public class UserInterface extends javax.swing.JFrame {
 	private javax.swing.JButton solveButton;
 	private javax.swing.JLabel title;
 	public static javax.swing.JLabel infoBox;
-	private GameField gameField;
+	public static GameField gameField;
 
 	public UserInterface() {
 		initComponents();

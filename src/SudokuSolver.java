@@ -1,7 +1,9 @@
 public class SudokuSolver {
 
+	static  UserInterface gui;
+
 	public SudokuSolver () {
-		UserInterface gui = new UserInterface();
+		gui = new UserInterface();
 
 		gui.create();
 	}

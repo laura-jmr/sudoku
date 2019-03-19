@@ -8,7 +8,7 @@ public class GameField extends JPanel {
 		innerFields = new InnerField[9];
 
 		for (int i = 0; i < innerFields.length; i++) {
-			innerFields[i] = new InnerField();
+			innerFields[i] = new InnerField(this);
 		}
 
 		setBackground(new java.awt.Color(255, 255, 255));
@@ -64,11 +64,14 @@ public class GameField extends JPanel {
 		);
 	}
 
-	public Field[] getRow (int r) {
+	public Field[] getRow (int r) throws RowNotExistingException {
 		Field[] row = new Field[9];
 		InnerField[] innerFieldsOfRow = new InnerField[3];
 
-		if (r < 3) {
+
+		if (r < 0 || r >= 9) {
+			throw new RowNotExistingException(r);
+		} else if (r < 3) {
 			innerFieldsOfRow[0] = innerFields[0];
 			innerFieldsOfRow[1] = innerFields[1];
 			innerFieldsOfRow[2] = innerFields[2];
@@ -84,47 +87,43 @@ public class GameField extends JPanel {
 
 		}
 
-		try {
-			switch (r) {
-				case 0:
-					row = getFieldsOfRow(innerFieldsOfRow, 0);
-					break;
-				case 1:
-					row = getFieldsOfRow(innerFieldsOfRow, 1);
-					break;
-				case 2:
-					row = getFieldsOfRow(innerFieldsOfRow, 2);
-					break;
-				case 3:
-					row = getFieldsOfRow(innerFieldsOfRow, 0);
-					break;
-				case 4:
-					row = getFieldsOfRow(innerFieldsOfRow, 1);
-					break;
-				case 5:
-					row = getFieldsOfRow(innerFieldsOfRow, 2);
-					break;
-				case 6:
-					row = getFieldsOfRow(innerFieldsOfRow, 0);
-					break;
-				case 7:
-					row = getFieldsOfRow(innerFieldsOfRow, 1);
-					break;
-				case 8:
-					row = getFieldsOfRow(innerFieldsOfRow, 2);
-					break;
-			}
-		} catch (NullPointerException e) {
-			System.err.println(e);
+		switch (r) {
+			case 0:
+				row = getFieldsOfRow(innerFieldsOfRow, 0);
+				break;
+			case 1:
+				row = getFieldsOfRow(innerFieldsOfRow, 1);
+				break;
+			case 2:
+				row = getFieldsOfRow(innerFieldsOfRow, 2);
+				break;
+			case 3:
+				row = getFieldsOfRow(innerFieldsOfRow, 0);
+				break;
+			case 4:
+				row = getFieldsOfRow(innerFieldsOfRow, 1);
+				break;
+			case 5:
+				row = getFieldsOfRow(innerFieldsOfRow, 2);
+				break;
+			case 6:
+				row = getFieldsOfRow(innerFieldsOfRow, 0);
+				break;
+			case 7:
+				row = getFieldsOfRow(innerFieldsOfRow, 1);
+				break;
+			case 8:
+				row = getFieldsOfRow(innerFieldsOfRow, 2);
+				break;
 		}
 
 		return row;
 	}
 
-	private Field[] getFieldsOfRow (InnerField[] innerFields, int r) throws NullPointerException {
+	private Field[] getFieldsOfRow (InnerField[] innerFields, int r) throws RowNotExistingException{
 		Field[] row = new Field[9];
 
-		if (r < 3) {
+		if (r < 3 && r >= 0) {
 			for (int i = 0; i < 3; i++) {
 				Field[] temp = innerFields[i].getRow(r);
 
@@ -141,7 +140,7 @@ public class GameField extends JPanel {
 			}
 
 		} else {
-			throw new NullPointerException();
+			throw new RowNotExistingException(r);
 		}
 
 

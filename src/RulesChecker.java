@@ -85,7 +85,13 @@ public class RulesChecker {
 	}
 
 	private static void checkRows (GameField gameField) {
-		gameField.getRow(0);
+		try {
+			Field[] row = gameField.getRow(0);
+
+		} catch (RowNotExistingException e) {
+			System.err.println(e.getMessage() + "\nplease choose a row between 0 and 8...");
+		}
+
 		/*List<Field> multiples = multipleNumbersInRows(gameField);
 
 		if (!multiples.isEmpty()) {

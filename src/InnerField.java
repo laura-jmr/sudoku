@@ -3,7 +3,8 @@ public class InnerField extends javax.swing.JPanel {
 	Field[] fields;
 	GameField gameField;
 
-	public InnerField () {
+	public InnerField (GameField g) {
+		gameField = g;
 		setBackground(new java.awt.Color(244, 244, 244));
 		fields = new Field[9];
 
@@ -77,13 +78,10 @@ public class InnerField extends javax.swing.JPanel {
 			switch (r) {
 				case 0:
 					row[i] = fields[i];
-					break;
 				case 1:
 					row[i] = fields[i + 3];
-					break;
 				case 2:
 					row[i] = fields[i + 6];
-					break;
 			}
 		}
 
