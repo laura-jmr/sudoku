@@ -57,7 +57,7 @@ public class RulesChecker {
 			init();
 
 			checkInnerField(innerField);
-			checkRows(UserInterface.gameField);
+			//checkRows(UserInterface.gameField);
 
 			if (errorInnerField || errorRows || errorColumns) {
 				UserInterface.error();
