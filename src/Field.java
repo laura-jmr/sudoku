@@ -8,8 +8,9 @@ public class Field extends JTextField {
 	private Field currentField;
 
 	public Field (InnerField field) {
-		currentField = this;
 		innerField = field;
+		currentField = this;
+
 		setHorizontalAlignment(javax.swing.JTextField.CENTER);
 		setToolTipText("");
 		setAutoscrolls(false);
@@ -21,8 +22,8 @@ public class Field extends JTextField {
 		addKeyListener(new java.awt.event.KeyAdapter() {
 
 			public void keyTyped(java.awt.event.KeyEvent evt) {
-				handleInput(evt);
-				RulesChecker.checkRules(currentField.getInnerField(), currentField);
+			handleInput(evt);
+			RulesChecker.checkRules(currentField.getInnerField(), currentField);
 			}
 		});
 	}
@@ -48,6 +49,5 @@ public class Field extends JTextField {
 
 		System.out.println("input in currentfield: " + currentField.getText());
 		System.out.println("input in real field: " + currentField.innerField.fields[0].getText());
-
 	}
 }

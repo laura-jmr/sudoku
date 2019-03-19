@@ -2,47 +2,61 @@ import java.awt.*;
 
 public class RulesChecker {
 
-	public static boolean rechecked = true;
-	public static boolean errorInput = false;
-	public static boolean errorInnerField = false;
-	public static boolean errorRows = false;
-	public static boolean errorColumns = false;
-	public static int currentNumberPos;
+
+	static boolean errorInput;
+	static boolean errorInnerField;
+	static boolean errorRows;
+	static boolean errorColumns;
+	static boolean rechecked;
+	static int currentNumberPos;
 	static Field currentField;
 	static Field oldField;
-	public static List<Field> errorFields;
+	static GameField gameField;
+	static List<Field> errorFields;
 
+	public RulesChecker (GameField g) {
+		gameField = g;
+		init();
+	}
+
+	private static void init () {
+		errorInput = false;
+		errorInnerField = false;
+		errorRows = false;
+		errorColumns = false;
+		rechecked = true;
+		errorFields = new List<>();
+	}
 
 	public static void checkInput (char inputC) {
 		char newInput = ' ';
 
 		try {
-
 			int inputI = Integer.parseInt("" + inputC);
 
 			if (inputI != 0) {
 				newInput = (char) inputI;
 			}
-
 		} catch (NumberFormatException e) {
 			System.err.println(e);
 		}
 
-		if (newInput == ' ') {
+		if (newInput == ' ')
 			errorInput = true;
-		}
-
 	}
 
 	public static void checkRules (InnerField innerField, Field field) {
+
 		if (!rechecked) {
 			oldField = currentField;
 			currentField = field;
-			rechecking(innerField, field);
+
+			recheck(innerField, field);
 		} else {
 			currentField = field;
 
-			resetErrors();
+			init();
+
 			checkInnerField(innerField);
 			checkRows(innerField.gameField);
 
@@ -50,11 +64,10 @@ public class RulesChecker {
 				UserInterface.error();
 			}
 		}
-
-
 	}
 
-	private static void rechecking (InnerField innerField, Field field) {
+	private static void recheck (InnerField innerField, Field field) {
+
 		for (int i = 0; i < oldField.getInnerField().fields.length; i++) {
 			if(oldField.getInnerField().fields[i].getForeground() == Color.red) {
 				oldField.getInnerField().fields[i].setForeground(Color.black);
@@ -64,30 +77,45 @@ public class RulesChecker {
 		if (oldField == field) {
 			errorFields = new List<>();
 			rechecked = true;
+
 			checkRules(innerField, field);
+
 			return;
 
 		} else {
 			rechecked = true;
+
 			checkRules(innerField, field);
 		}
 	}
 
+	private static void checkInnerField (InnerField innerField) {
+		String[] numbers = innerField.getNumberArray();
+		String currentNumber;
 
-	private static void resetErrors () {
-		errorInput = false;
-		errorInnerField = false;
-		errorRows = false;
-		errorColumns = false;
-		currentNumberPos = 0;
-		rechecked = true;
-		errorFields = new List<>();
+		for (int i = 0; i < numbers.length - 1; i++) {
+			currentNumber = numbers[i];
+
+			for (int j = i + 1; j < numbers.length; j++) {
+
+				if (currentNumber.equals(numbers[j]) && !currentNumber.equals("")) {
+					errorInnerField = true;
+
+					if (currentField == innerField.fields[i]) {
+						errorFields.append(innerField.fields[j]);
+
+					} else if (currentField == innerField.fields[j]) {
+						errorFields.append(innerField.fields[i]);
+					}
+				}
+			}
+		}
 	}
 
 	private static void checkRows (GameField gameField) {
+
 		try {
 			Field[] row = gameField.getRow(0);
-
 		} catch (RowNotExistingException e) {
 			System.err.println(e.getMessage() + "\nplease choose a row between 0 and 8...");
 		}
@@ -147,54 +175,5 @@ public class RulesChecker {
 
 		}*/
 
-	}
-
-	private static List<Field> multipleNumbersInRows (GameField gameField) {
-		String currentNumber;
-		boolean found = false;
-		errorFields = new List<>();
-		/*String[][] gameNumbers = gameField.get2DNumberArray();
-
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				currentNumber = gameNumbers[i][j];
-				for (int k = 1; k < 9; k++) {
-					if (currentNumber.equals(gameNumbers[i][k]) && !currentNumber.equals("") && j!=k) {
-						//System.out.println("found multiiple numbers! Pos: y: " + i + " x: " + j + " 2Pos: y: " + i + " x: " + k );
-						errorFields.append(i);
-						errorFields.append(j);
-						errorFields.append(i);
-						errorFields.append(k);
-						found = true;
-					}
-					if (found)
-						k = 8;
-				}
-			}
-		}*/
-		return errorFields;
-	}
-
-	private static void checkInnerField (InnerField innerField) {
-		String[] numbers = innerField.getNumberArray();
-		String currentNumber;
-
-		for (int i = 0; i < numbers.length - 1; i++) {
-			currentNumber = numbers[i];
-
-			for (int j = i + 1; j < numbers.length; j++) {
-
-				if (currentNumber.equals(numbers[j]) && !currentNumber.equals("")) {
-					errorInnerField = true;
-
-					if (currentField == innerField.fields[i]) {
-						errorFields.append(innerField.fields[j]);
-
-					} else if (currentField == innerField.fields[j]) {
-						errorFields.append(innerField.fields[i]);
-					}
-				}
-			}
-		}
 	}
 }

@@ -68,7 +68,6 @@ public class GameField extends JPanel {
 		Field[] row = new Field[9];
 		InnerField[] innerFieldsOfRow = new InnerField[3];
 
-
 		if (r < 0 || r >= 9) {
 			throw new RowNotExistingException(r);
 		} else if (r < 3) {
