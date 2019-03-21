@@ -64,84 +64,33 @@ public class GameField extends JPanel {
 		);
 	}
 
-	public Field[] getRow (int r) throws RowNotExistingException {
+	public Field[] getRow (Field field, int r) {
 		Field[] row = new Field[9];
 		InnerField[] innerFieldsOfRow = new InnerField[3];
 
-		if (r < 3) {
-			innerFieldsOfRow[0] = innerFields[0];
-			innerFieldsOfRow[1] = innerFields[1];
-			innerFieldsOfRow[2] = innerFields[2];
-		} else if (r < 6) {
-			innerFieldsOfRow[0] = innerFields[3];
-			innerFieldsOfRow[1] = innerFields[4];
-			innerFieldsOfRow[2] = innerFields[5];
-
-		} else if (r < 9) {
-			innerFieldsOfRow[0] = innerFields[6];
-			innerFieldsOfRow[1] = innerFields[7];
-			innerFieldsOfRow[2] = innerFields[8];
+		for (int i = 0; i < innerFieldsOfRow.length; i++) {
+			if (r < 3) {
+				innerFieldsOfRow[i] = innerFields[i];
+			} else if (r < 6) {
+				innerFieldsOfRow[i] = innerFields[i + 3];
+			} else if (r < 9) {
+				innerFieldsOfRow[i] = innerFields[i + 6];
+			}
 		}
 
-		switch (r) {
-			case 0:
-				row = getFieldsOfRow(innerFieldsOfRow, 0);
-				break;
-			case 1:
-				row = getFieldsOfRow(innerFieldsOfRow, 1);
-				break;
-			case 2:
-				row = getFieldsOfRow(innerFieldsOfRow, 2);
-				break;
-			case 3:
-				row = getFieldsOfRow(innerFieldsOfRow, 0);
-				break;
-			case 4:
-				row = getFieldsOfRow(innerFieldsOfRow, 1);
-				break;
-			case 5:
-				row = getFieldsOfRow(innerFieldsOfRow, 2);
-				break;
-			case 6:
-				row = getFieldsOfRow(innerFieldsOfRow, 0);
-				break;
-			case 7:
-				row = getFieldsOfRow(innerFieldsOfRow, 1);
-				break;
-			case 8:
-				row = getFieldsOfRow(innerFieldsOfRow, 2);
-				break;
-		}
-
-		return row;
-	}
-
-	private Field[] getFieldsOfRow (InnerField[] innerFields, int r) throws RowNotExistingException{
-		Field[] row = new Field[9];
-
-		if (r < 3 && r >= 0) {
-			for (int i = 0; i < 3; i++) {
-				Field[] temp = innerFields[i].getRow(r);
-
-				for (int j = 0; j < 3; j++) {
-					switch (i) {
-						case 0:
-							row[j] = temp[j];
-						case 1:
-							row[j + 3] = temp[j];
-						case 2:
-							row[j + 6] = temp[j];
-					}
+		for (int i = 0; i < 3; i++) {
+			System.out.println("\ninner row of the " + i + " innerfield: ");
+			Field[] temp = innerFieldsOfRow[i].getRow(innerFieldsOfRow[i].getRowPos(field));
+			for (int j = 0; j < temp.length; j++) {
+				switch (i) {
+					case 0:
+						row[j] = temp[j];
+					case 1:
+						row[j + 3] = temp[j];
+					case 2:
+						row[j + 6] = temp[j];
 				}
 			}
-
-		} else {
-			throw new RowNotExistingException(r);
-		}
-
-
-		for (int i = 0; i < row.length; i++) {
-			System.out.println("row: " + row[i].getText());
 		}
 
 		return row;

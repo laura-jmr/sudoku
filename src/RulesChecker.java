@@ -108,10 +108,11 @@ public class RulesChecker {
 
 	private static void checkRows (GameField gameField) {
 		System.out.println("---checking row---");
-		try {
-			Field[] row = gameField.getRow(UserInterface.gameField.getRowPosOfField(currentField));
-		} catch (RowNotExistingException e) {
-			System.err.println(e.getMessage() + "\nplease choose a row between 0 and 8...");
+
+		Field[] row = gameField.getRow(currentField, UserInterface.gameField.getRowPosOfField(currentField));
+
+		for (int i = 0; i < row.length; i++) {
+			System.out.print("\n" + row[i].getText() + ", ");
 		}
 
 		/*List<Field> multiples = multipleNumbersInRows(gameField);
