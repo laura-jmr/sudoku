@@ -1,5 +1,3 @@
-import java.awt.*;
-
 public class RulesChecker {
 
 
@@ -66,8 +64,8 @@ public class RulesChecker {
 		System.out.println(innerfieldOfOldField.fields.length);
 
 		for (int i = 0; i < innerfieldOfOldField.fields.length; i++) {
-			if(innerfieldOfOldField.fields[i].getForeground() == Color.red) {
-				innerfieldOfOldField.fields[i].setForeground(Color.black);
+			if(innerfieldOfOldField.fields[i].getForeground() == java.awt.Color.red) {
+				innerfieldOfOldField.fields[i].setForeground(java.awt.Color.black);
 			}
 		}
 

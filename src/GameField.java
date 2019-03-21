@@ -68,9 +68,7 @@ public class GameField extends JPanel {
 		Field[] row = new Field[9];
 		InnerField[] innerFieldsOfRow = new InnerField[3];
 
-		if (r < 0 || r >= 9) {
-			throw new RowNotExistingException(r);
-		} else if (r < 3) {
+		if (r < 3) {
 			innerFieldsOfRow[0] = innerFields[0];
 			innerFieldsOfRow[1] = innerFields[1];
 			innerFieldsOfRow[2] = innerFields[2];
@@ -83,17 +81,7 @@ public class GameField extends JPanel {
 			innerFieldsOfRow[0] = innerFields[6];
 			innerFieldsOfRow[1] = innerFields[7];
 			innerFieldsOfRow[2] = innerFields[8];
-
 		}
-
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < innerFields.length; j++) {
-				if (innerFields[j] == innerFieldsOfRow[i]) {
-					System.out.println("index of " + i + " is " + j);
-				}
-			}
-		}
-
 
 		switch (r) {
 			case 0:
@@ -173,22 +161,39 @@ public class GameField extends JPanel {
 	}
 
 	public int getRowPosOfField (Field field) {
-		int rowPos;
-		int pos = 0;
+		InnerField[] innerFieldsInRow = new InnerField[3];
+		int row = 0;
+		int innerFieldPos = 0;
+		InnerField innerFieldOfField = getInnerfieldOfField(field);
 
 		for (int i = 0; i < UserInterface.gameField.innerFields.length; i++) {
-			for (int j = 0; j < UserInterface.gameField.innerFields[0].fields.length; j++) {
-				if (UserInterface.gameField.getInnerfieldOfField(field).fields[i] == field) {
-					break;
-				}
-				pos++;
+			if (innerFieldOfField == UserInterface.gameField.innerFields[i]) {
+				innerFieldPos = i;
+				break;
 			}
 		}
 
-		rowPos = pos / 9;
-		System.out.println("rowpos of currentfield is " + rowPos );
+		if (innerFieldPos < 3) {
+			for (int i = 0; i < innerFieldsInRow.length; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i];
+			}
+			row = 0;
+		} else if (innerFieldPos < 6) {
+			for (int i = 0; i < innerFieldsInRow.length; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i + 3];
+			}
+			row = 3;
+		} else if (innerFieldPos < 9) {
+			for (int i = 0; i < innerFieldsInRow.length; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i + 6];
+			}
+			row = 6;
+		}
 
-		return rowPos;
+		int temp = innerFieldOfField.getRowPos(field);
+		row += temp;
+
+		return row;
 	}
 }
 
