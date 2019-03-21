@@ -3,13 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="fe320b58-3542-4082-8a8d-e513cc155b31" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/Field$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/Field$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/Field.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/GameField.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/InnerField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/InnerField.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/RulesChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/RulesChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/SudokuSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/SudokuSolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sudoku-solver/UserInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InnerField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InnerField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RowNotExistingException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RulesChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RulesChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SudokuSolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sudoku-solver.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku-solver.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,20 +48,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            <state relative-caret-position="156">
+              <caret line="73" column="53" lean-forward="true" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/InnerField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="84" column="38" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
+            <state relative-caret-position="299">
+              <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -59,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Field.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="281">
               <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -71,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RulesChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="114" column="36" selection-start-line="114" selection-start-column="36" selection-end-line="114" selection-end-column="36" />
+            <state relative-caret-position="249">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
             </state>
           </provider>
         </entry>
@@ -96,8 +106,8 @@
         <option value="$PROJECT_DIR$/src/Number.java" />
         <option value="$PROJECT_DIR$/src/Field.java" />
         <option value="$PROJECT_DIR$/src/UserInterface.java" />
-        <option value="$PROJECT_DIR$/src/GameField.java" />
         <option value="$PROJECT_DIR$/src/RulesChecker.java" />
+        <option value="$PROJECT_DIR$/src/GameField.java" />
         <option value="$PROJECT_DIR$/src/InnerField.java" />
       </list>
     </option>
@@ -141,12 +151,12 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553179316416" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553183134073" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
@@ -187,12 +197,12 @@
       <workItem from="1552561638831" duration="19215000" />
       <workItem from="1552747611778" duration="11739000" />
       <workItem from="1553009336330" duration="597000" />
-      <workItem from="1553101303636" duration="4210000" />
+      <workItem from="1553101303636" duration="7206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42218000" />
+    <option name="totallyTimeSpent" value="45214000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -261,16 +271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -292,24 +292,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RulesChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/Field.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="114" column="36" selection-start-line="114" selection-start-column="36" selection-end-line="114" selection-end-column="36" />
+        <state relative-caret-position="281">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/InnerField.java">
+    <entry file="file://$PROJECT_DIR$/src/RulesChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="84" column="38" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
+        <state relative-caret-position="249">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        <state relative-caret-position="156">
+          <caret line="73" column="53" lean-forward="true" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/InnerField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
         </state>
       </provider>
     </entry>

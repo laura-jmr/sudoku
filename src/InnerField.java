@@ -76,13 +76,16 @@ public class InnerField extends javax.swing.JPanel {
 			switch (r) {
 				case 0:
 					row[i] = fields[i];
+					break;
 				case 1:
 					row[i] = fields[i + 3];
+					break;
 				case 2:
 					row[i] = fields[i + 6];
+					break;
 			}
 		}
-		System.out.println("test: " + fields[8].getText());
+		System.out.println("test: " + fields[0].getText());
 
 		for (int i = 0; i < row.length; i++) {
 			System.out.print(row[i].getText() + ", ");
@@ -102,11 +105,11 @@ public class InnerField extends javax.swing.JPanel {
 			}
 		}
 
-		if (pos < 3) {
+		if (pos < 3 && pos >= 0) {
 			row = 0;
-		} else if (pos < 6) {
+		} else if (pos < 6 && pos >= 3) {
 			row = 1;
-		} else if (pos < 9) {
+		} else if (pos < 9 && pos >= 6) {
 			row = 2;
 		}
 

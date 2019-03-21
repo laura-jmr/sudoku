@@ -112,7 +112,7 @@ public class RulesChecker {
 		Field[] row = gameField.getRow(currentField, UserInterface.gameField.getRowPosOfField(currentField));
 
 		for (int i = 0; i < row.length; i++) {
-			System.out.print("\n" + row[i].getText() + ", ");
+			System.out.print(row[i].getText() + ", ");
 		}
 
 		/*List<Field> multiples = multipleNumbersInRows(gameField);

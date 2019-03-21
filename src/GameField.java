@@ -65,16 +65,25 @@ public class GameField extends JPanel {
 	}
 
 	public Field[] getRow (Field field, int r) {
+		System.out.println("---getRow--- \nrow is " + r);
 		Field[] row = new Field[9];
 		InnerField[] innerFieldsOfRow = new InnerField[3];
 
 		for (int i = 0; i < innerFieldsOfRow.length; i++) {
-			if (r < 3) {
+			if (r < 3 && r >= 0) {
 				innerFieldsOfRow[i] = innerFields[i];
-			} else if (r < 6) {
+			} else if (r < 6 && r >= 3) {
 				innerFieldsOfRow[i] = innerFields[i + 3];
-			} else if (r < 9) {
+			} else if (r < 9 && r >= 6) {
 				innerFieldsOfRow[i] = innerFields[i + 6];
+			}
+		}
+
+		for (int i = 0; i < innerFieldsOfRow.length; i++) {
+			for (int j = 0; j < innerFields.length; j++) {
+				if (innerFieldsOfRow[i] == innerFields[j]) {
+					System.out.println("innerfield at " + i + "is " + j);
+				}
 			}
 		}
 
