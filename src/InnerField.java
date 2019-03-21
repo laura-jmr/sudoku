@@ -69,7 +69,6 @@ public class InnerField extends javax.swing.JPanel {
 	}
 
 	public Field[] getRow (int r) {
-		System.out.println("get row " + r + " from innerfield");
 		Field[] row = new Field[3];
 
 		for (int i = 0; i < row.length; i++) {
@@ -84,11 +83,6 @@ public class InnerField extends javax.swing.JPanel {
 					row[i] = fields[i + 6];
 					break;
 			}
-		}
-		System.out.println("test: " + fields[0].getText());
-
-		for (int i = 0; i < row.length; i++) {
-			System.out.print(row[i].getText() + ", ");
 		}
 
 		return row;
@@ -112,8 +106,6 @@ public class InnerField extends javax.swing.JPanel {
 		} else if (pos < 9 && pos >= 6) {
 			row = 2;
 		}
-
-		System.out.println("pos of currentfield in innerfield: " + row);
 
 		return row;
 	}

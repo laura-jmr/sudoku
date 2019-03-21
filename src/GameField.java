@@ -65,7 +65,6 @@ public class GameField extends JPanel {
 	}
 
 	public Field[] getRow (Field field, int r) {
-		System.out.println("---getRow--- \nrow is " + r);
 		Field[] row = new Field[9];
 		InnerField[] innerFieldsOfRow = new InnerField[3];
 
@@ -79,17 +78,8 @@ public class GameField extends JPanel {
 			}
 		}
 
-		for (int i = 0; i < innerFieldsOfRow.length; i++) {
-			for (int j = 0; j < innerFields.length; j++) {
-				if (innerFieldsOfRow[i] == innerFields[j]) {
-					System.out.println("innerfield at " + i + "is " + j);
-				}
-			}
-		}
-
 		for (int i = 0; i < 3; i++) {
-			System.out.println("\ninner row of the " + i + " innerfield: ");
-			Field[] temp = innerFieldsOfRow[i].getRow(innerFieldsOfRow[i].getRowPos(field));
+			Field[] temp = innerFieldsOfRow[i].getRow(getInnerfieldOfField(field).getRowPos(field));
 			for (int j = 0; j < temp.length; j++) {
 				switch (i) {
 					case 0:
@@ -152,6 +142,17 @@ public class GameField extends JPanel {
 		row += temp;
 
 		return row;
+	}
+
+	public void setAllFieldsTextBlack () {
+
+		for (int i = 0; i < innerFields.length; i++) {
+			for (int j = 0; j < innerFields[0].fields.length; j++) {
+				if (innerFields[i].fields[j].getForeground() == java.awt.Color.red) {
+					innerFields[i].fields[j].setForeground(java.awt.Color.black);
+				}
+			}
+		}
 	}
 }
 
