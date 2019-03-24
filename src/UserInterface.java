@@ -7,7 +7,7 @@ public class UserInterface extends javax.swing.JFrame {
 	private javax.swing.JButton newGameButton;
 	private javax.swing.JButton solveButton;
 	private javax.swing.JLabel title;
-	public static javax.swing.JLabel infoBox;
+	public static javax.swing.JTextArea infoBox;
 	public static GameField gameField;
 
 	public UserInterface() {
@@ -20,7 +20,7 @@ public class UserInterface extends javax.swing.JFrame {
 		buttons = new javax.swing.JPanel();
 		newGameButton = new javax.swing.JButton();
 		solveButton = new javax.swing.JButton();
-		infoBox = new javax.swing.JLabel();
+		infoBox = new javax.swing.JTextArea();
 		gameField = new GameField();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,7 +82,8 @@ public class UserInterface extends javax.swing.JFrame {
 
 		infoBox.setBackground(new java.awt.Color(244, 244, 244));
 		infoBox.setText("fill your field...");
-		infoBox.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+		infoBox.setLineWrap(true);
+		infoBox.setWrapStyleWord(true);
 		infoBox.setMaximumSize(infoBox.getMinimumSize());
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,14 +147,23 @@ public class UserInterface extends javax.swing.JFrame {
 	    }
 
         RulesChecker.currentField.setText("");
-        RulesChecker.errorInnerField = false;
 
-        String infoBoxText = "";
+        String infoBoxText = "error found:";
 
         if (RulesChecker.errorInnerField) {
-            infoBoxText += "Do not insert a number twice!";
+            infoBoxText += "\nA number can't be twice in a field!";
         }
+        if (RulesChecker.errorRows) {
+        	infoBoxText += "\nA number can't be twice in a row!";
+		}
+        if (RulesChecker.errorColumns) {
+        	infoBoxText += "\nA number can't be twice in a column!";
+		}
 
         infoBox.setText(infoBoxText);
+	}
+
+	public static void resetInfoBox () {
+		infoBox.setText("fill your field...");
 	}
 }

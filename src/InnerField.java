@@ -58,16 +58,6 @@ public class InnerField extends javax.swing.JPanel {
 		);
 	}
 
-	public String[] getNumberArray () {
-		String[] numbers = new String[9];
-
-		for (int i = 0; i < fields.length; i++) {
-			numbers[i] = fields[i].getText();
-		}
-
-		return numbers;
-	}
-
 	public Field[] getRow (int r) {
 		Field[] row = new Field[3];
 

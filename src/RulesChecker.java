@@ -1,5 +1,3 @@
-import java.io.FileInputStream;
-
 public class RulesChecker {
 
 
@@ -28,7 +26,7 @@ public class RulesChecker {
 				newInput = (char) inputI;
 			}
 		} catch (NumberFormatException e) {
-			System.err.println(e);
+			System.err.println();
 		}
 
 		if (newInput == ' ')
@@ -58,6 +56,8 @@ public class RulesChecker {
 				}
 
 				UserInterface.error();
+			} else {
+				UserInterface.resetInfoBox();
 			}
 	}
 

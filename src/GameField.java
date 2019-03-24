@@ -190,23 +190,6 @@ public class GameField extends JPanel {
 		int column = 0;
 		int innerFieldPos = getInnerFieldPos(getInnerfieldOfField(field));
 
-		/*if (innerFieldPos < 3) {
-			for (int i = 0; i < innerFieldsInRow.length; i++) {
-				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i];
-			}
-			row = 0;
-		} else if (innerFieldPos < 6) {
-			for (int i = 0; i < innerFieldsInRow.length; i++) {
-				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i + 3];
-			}
-			row = 3;
-		} else if (innerFieldPos < 9) {
-			for (int i = 0; i < innerFieldsInRow.length; i++) {
-				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i + 6];
-			}
-			row = 6;
-		}*/
-
 		if (innerFieldPos == 0 || innerFieldPos == 3 || innerFieldPos == 6) {
 			for (int i = 0; i < 3; i++) {
 				innerFieldsInRow[i] = UserInterface.gameField.innerFields[innerFieldPos];
