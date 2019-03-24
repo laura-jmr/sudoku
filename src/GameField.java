@@ -231,5 +231,18 @@ public class GameField extends JPanel {
 			}
 		}
 	}
+
+	public boolean emptyFields () {
+
+		for (int i = 0; i < innerFields.length; i++) {
+			for (int j = 0; j < innerFields[0].fields.length; j++) {
+				if (innerFields[i].fields[j].getText().equals("")) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }
 

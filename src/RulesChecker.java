@@ -60,23 +60,23 @@ public class RulesChecker {
 			}
 	}
 
-	private static void checkInnerField (InnerField innerField) {
+	public static void checkInnerField (InnerField innerField) {
 		errorInnerField = getMultipleNumbers(innerField.fields);
 	}
 
-	private static void checkRows () {
+	public static void checkRows () {
 		Field[] row = UserInterface.gameField.getRow(currentField, UserInterface.gameField.getRowPosOfField(currentField));
 
 		errorRows = getMultipleNumbers(row);
 	}
 
-	private static void checkColumns () {
+	public static void checkColumns () {
 		Field[] column = UserInterface.gameField.getColumn(currentField, UserInterface.gameField.getColumnPosOfField(currentField));
 
 		errorColumns = getMultipleNumbers(column);
 	}
 
-	private static boolean getMultipleNumbers (Field[] array) {
+	public static boolean getMultipleNumbers (Field[] array) {
 		String currentNumber;
 		boolean error = false;
 		String[] numbers = fieldToStringArray(array);

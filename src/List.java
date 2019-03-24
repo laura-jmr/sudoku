@@ -342,4 +342,14 @@ public class List<ContentType> {
     }
   }
 
+  public int getLength () {
+    int length = 0;
+    toFirst();
+    while (hasAccess()) {
+      length++;
+      next();
+    }
+
+    return length;
+  }
 }

@@ -137,7 +137,7 @@ public class UserInterface extends javax.swing.JFrame {
 	}
 
 	private void solveButtonMouseClicked() {
-
+		Solver.solve(gameField);
 	}
 
 	public void create() {
