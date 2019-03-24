@@ -1,6 +1,5 @@
 public class RulesChecker {
 
-
 	static boolean errorInput = false;
 	static boolean errorInnerField = false;
 	static boolean errorRows = false;

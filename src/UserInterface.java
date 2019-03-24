@@ -1,10 +1,12 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class UserInterface extends javax.swing.JFrame {
 
 	private javax.swing.JPanel buttons;
 	private javax.swing.JPanel header;
-	private javax.swing.JButton newGameButton;
 	private javax.swing.JButton solveButton;
 	private javax.swing.JLabel title;
 	public static javax.swing.JTextArea infoBox;
@@ -18,15 +20,39 @@ public class UserInterface extends javax.swing.JFrame {
 		header = new javax.swing.JPanel();
 		title = new javax.swing.JLabel();
 		buttons = new javax.swing.JPanel();
-		newGameButton = new javax.swing.JButton();
 		solveButton = new javax.swing.JButton();
 		infoBox = new javax.swing.JTextArea();
 		gameField = new GameField();
+		JMenuBar menuBar = new JMenuBar();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Sudoku-Solver by laura-jmr");
 		setResizable(false);
 		title.setText("Sudoku Solver");
+
+		JMenu menu1 = new JMenu("File");
+		JMenuItem saveFile = new JMenuItem("save file");
+		saveFile.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("saving");
+			}
+		});
+		menu1.add(saveFile);
+
+		JMenuItem newProject = new JMenuItem("new project");
+		newProject.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("clearing");
+				gameField.clearAllFields();
+			}
+		});
+		menu1.add(newProject);
+		menuBar.add(menu1);
+
+		setJMenuBar(menuBar);
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
 
 		javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
 		header.setLayout(headerLayout);
@@ -45,13 +71,6 @@ public class UserInterface extends javax.swing.JFrame {
 					.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 
-		newGameButton.setText("create new game");
-		newGameButton.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				newGameButtonMouseClicked();
-			}
-		});
-
 		solveButton.setText("solve");
 		solveButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -66,7 +85,6 @@ public class UserInterface extends javax.swing.JFrame {
 				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsLayout.createSequentialGroup()
 					.addContainerGap(24, Short.MAX_VALUE)
 					.addGroup(buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-						.addComponent(newGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(solveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(20, 20, 20))
 		);
@@ -75,8 +93,6 @@ public class UserInterface extends javax.swing.JFrame {
 				.addGroup(buttonsLayout.createSequentialGroup()
 					.addGap(90, 90, 90)
 					.addComponent(solveButton)
-					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-					.addComponent(newGameButton)
 					.addGap(44, 44, 44))
 		);
 
@@ -120,10 +136,6 @@ public class UserInterface extends javax.swing.JFrame {
 		pack();
 	}
 
-	private void newGameButtonMouseClicked() {
-		this.initComponents();
-	}
-
 	private void solveButtonMouseClicked() {
 
 	}
@@ -165,5 +177,9 @@ public class UserInterface extends javax.swing.JFrame {
 
 	public static void resetInfoBox () {
 		infoBox.setText("fill your field...");
+	}
+
+	private static void safeFilePopUp () {
+
 	}
 }
