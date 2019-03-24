@@ -111,15 +111,7 @@ public class GameField extends JPanel {
 	public int getRowPosOfField (Field field) {
 		InnerField[] innerFieldsInRow = new InnerField[3];
 		int row = 0;
-		int innerFieldPos = 0;
-		InnerField innerFieldOfField = getInnerfieldOfField(field);
-
-		for (int i = 0; i < UserInterface.gameField.innerFields.length; i++) {
-			if (innerFieldOfField == UserInterface.gameField.innerFields[i]) {
-				innerFieldPos = i;
-				break;
-			}
-		}
+		int innerFieldPos = getInnerFieldPos(getInnerfieldOfField(field));
 
 		if (innerFieldPos < 3) {
 			for (int i = 0; i < innerFieldsInRow.length; i++) {
@@ -138,10 +130,104 @@ public class GameField extends JPanel {
 			row = 6;
 		}
 
-		int temp = innerFieldOfField.getRowPos(field);
+		int temp = getInnerfieldOfField(field).getRowPos(field);
 		row += temp;
 
 		return row;
+	}
+
+	private int getInnerFieldPos (InnerField innerField) {
+		int innerFieldPos = 0;
+
+		for (int i = 0; i < UserInterface.gameField.innerFields.length; i++) {
+			if (innerField == UserInterface.gameField.innerFields[i]) {
+				innerFieldPos = i;
+				break;
+			}
+		}
+
+		return innerFieldPos;
+	}
+
+	public Field[] getColumn (Field field, int c) {
+		Field[] column = new Field[9];
+		InnerField[] innerFieldsOfRow = new InnerField[3];
+
+		if (c < 3 && c >= 0) {
+			innerFieldsOfRow[0] = innerFields[0];
+			innerFieldsOfRow[1] = innerFields[3];
+			innerFieldsOfRow[2] = innerFields[6];
+		} else if (c < 6 && c >= 3) {
+			innerFieldsOfRow[0] = innerFields[1];
+			innerFieldsOfRow[1] = innerFields[4];
+			innerFieldsOfRow[2] = innerFields[7];
+		} else if (c < 9 && c >= 6) {
+			innerFieldsOfRow[0] = innerFields[2];
+			innerFieldsOfRow[1] = innerFields[5];
+			innerFieldsOfRow[2] = innerFields[8];
+		}
+
+		for (int i = 0; i < 3; i++) {
+			Field[] temp = innerFieldsOfRow[i].getColumn(getInnerfieldOfField(field).getColumnPos(field));
+
+			for (int j = 0; j < temp.length; j++) {
+				switch (i) {
+					case 0:
+						column[j] = temp[j];
+					case 1:
+						column[j + 3] = temp[j];
+					case 2:
+						column[j + 6] = temp[j];
+				}
+			}
+		}
+
+		return column;
+	}
+
+	public int getColumnPosOfField (Field field) {
+		InnerField[] innerFieldsInRow = new InnerField[3];
+		int column = 0;
+		int innerFieldPos = getInnerFieldPos(getInnerfieldOfField(field));
+
+		/*if (innerFieldPos < 3) {
+			for (int i = 0; i < innerFieldsInRow.length; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i];
+			}
+			row = 0;
+		} else if (innerFieldPos < 6) {
+			for (int i = 0; i < innerFieldsInRow.length; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i + 3];
+			}
+			row = 3;
+		} else if (innerFieldPos < 9) {
+			for (int i = 0; i < innerFieldsInRow.length; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[i + 6];
+			}
+			row = 6;
+		}*/
+
+		if (innerFieldPos == 0 || innerFieldPos == 3 || innerFieldPos == 6) {
+			for (int i = 0; i < 3; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[innerFieldPos];
+			}
+			column = 0;
+		} else if (innerFieldPos == 1 || innerFieldPos == 4 || innerFieldPos == 7) {
+			for (int i = 0; i < 3; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[innerFieldPos];
+			}
+			column = 3;
+		} else if (innerFieldPos == 2 || innerFieldPos == 5 || innerFieldPos == 8) {
+			for (int i = 0; i < 3; i++) {
+				innerFieldsInRow[i] = UserInterface.gameField.innerFields[innerFieldPos];
+			}
+			column = 6;
+		}
+
+		int temp = getInnerfieldOfField(field).getColumnPos(field);
+		column += temp;
+
+		return column;
 	}
 
 	public void setAllFieldsTextBlack () {

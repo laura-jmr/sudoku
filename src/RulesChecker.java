@@ -7,9 +7,7 @@ public class RulesChecker {
 	static boolean errorInnerField = false;
 	static boolean errorRows = false;
 	static boolean errorColumns = false;
-	static boolean rechecked = true;
 	static Field currentField = new Field();
-	static Field oldField = new Field();
 	static List<Field> errorFields = new List<>();
 
 	private static void resetErrors () {
@@ -17,7 +15,6 @@ public class RulesChecker {
 		errorInnerField = false;
 		errorRows = false;
 		errorColumns = false;
-		rechecked = true;
 		errorFields = new List<>();
 	}
 
@@ -39,20 +36,15 @@ public class RulesChecker {
 	}
 
 	public static void checkRules (Field field) {
-
-	/*	if (!rechecked) {
-			oldField = currentField;
-			currentField = field;
-
-			recheck(field);
-		} else {*/
-			currentField = field;
+		currentField = field;
 		errorFields = new List<>();
-			resetErrors();
+
+		resetErrors();
 		UserInterface.gameField.setAllFieldsTextBlack();
 
 			checkInnerField(UserInterface.gameField.getInnerfieldOfField(field));
-			checkRows(UserInterface.gameField);
+			checkRows();
+			checkColumns();
 
 			if (errorInnerField || errorRows || errorColumns) {
 				if (errorInnerField) {
@@ -67,44 +59,22 @@ public class RulesChecker {
 
 				UserInterface.error();
 			}
-		//}
 	}
-
-	/*private static void recheck (Field field) {
-		System.out.println("---rechecking...---");
-		InnerField innerfieldOfOldField = UserInterface.gameField.getInnerfieldOfField(oldField);
-		System.out.println(innerfieldOfOldField.fields.length);
-
-		for (int i = 0; i < innerfieldOfOldField.fields.length; i++) {
-			if(innerfieldOfOldField.fields[i].getForeground() == java.awt.Color.red) {
-				innerfieldOfOldField.fields[i].setForeground(java.awt.Color.black);
-			}
-		}
-
-		if (oldField == field) {
-			errorFields = new List<>();
-			rechecked = true;
-
-			checkRules(field);
-
-			return;
-		} else {
-			rechecked = true;
-
-			checkRules(field);
-		}
-	}*/
 
 	private static void checkInnerField (InnerField innerField) {
 		errorInnerField = getMultipleNumbers(innerField.fields);
 	}
 
-	private static void checkRows (GameField gameField) {
-		System.out.println("---checking row---");
+	private static void checkRows () {
+		Field[] row = UserInterface.gameField.getRow(currentField, UserInterface.gameField.getRowPosOfField(currentField));
 
-		Field[] row = gameField.getRow(currentField, UserInterface.gameField.getRowPosOfField(currentField));
-		
 		errorRows = getMultipleNumbers(row);
+	}
+
+	private static void checkColumns () {
+		Field[] column = UserInterface.gameField.getColumn(currentField, UserInterface.gameField.getColumnPosOfField(currentField));
+
+		errorColumns = getMultipleNumbers(column);
 	}
 
 	private static boolean getMultipleNumbers (Field[] array) {

@@ -147,7 +147,6 @@ public class UserInterface extends javax.swing.JFrame {
 
         RulesChecker.currentField.setText("");
         RulesChecker.errorInnerField = false;
-        RulesChecker.rechecked = false;
 
         String infoBoxText = "";
 
@@ -157,22 +156,4 @@ public class UserInterface extends javax.swing.JFrame {
 
         infoBox.setText(infoBoxText);
 	}
-
-	public static void recheck () {
-        List<Field> temp = RulesChecker.errorFields;
-
-        if (temp.isEmpty()) {
-        	for (int i = 0; i < gameField.getInnerfieldOfField(RulesChecker.currentField).fields.length; i++) {
-        		if (gameField.getInnerfieldOfField(RulesChecker.currentField).fields[i].getForeground() == Color.red) {
-					gameField.getInnerfieldOfField(RulesChecker.currentField).fields[i].setForeground(Color.black);
-                }
-            }
-
-            RulesChecker.rechecked = true;
-            infoBox.setText("fill your field...");
-        }
-        else {
-            RulesChecker.currentField.setText("");
-        }
-    }
 }

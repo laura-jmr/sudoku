@@ -109,4 +109,50 @@ public class InnerField extends javax.swing.JPanel {
 
 		return row;
 	}
+
+	public int getColumnPos (Field field) {
+		int column = 10;
+		int pos = 0;
+
+		for (int i = 0; i < fields.length; i++) {
+			if (field == fields[i]) {
+				pos = i;
+				break;
+			}
+		}
+
+		if (pos == 0 || pos == 3 || pos == 6) {
+			column = 0;
+		} else if (pos == 1 || pos == 4 || pos == 7) {
+			column = 1;
+		} else if (pos == 2 || pos == 5 || pos == 8) {
+			column = 2;
+		}
+
+		return column;
+	}
+
+	public Field[] getColumn (int c) {
+		Field[] column = new Field[3];
+
+		switch (c) {
+			case 0:
+				column[0] = fields[0];
+				column[1] = fields[3];
+				column[2] = fields[6];
+				break;
+			case 1:
+				column[0] = fields[1];
+				column[1] = fields[4];
+				column[2] = fields[7];
+				break;
+			case 2:
+				column[0] = fields[2];
+				column[1] = fields[5];
+				column[2] = fields[8];
+				break;
+		}
+
+		return column;
+	}
 }
