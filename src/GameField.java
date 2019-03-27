@@ -245,4 +245,3 @@ public class GameField extends JPanel {
 		return false;
 	}
 }
-
